@@ -1,10 +1,8 @@
 package com.ideas2it.model;
 
-import java.util.List;
 import java.util.Set;
 
-//import com.ideas2it.model.Employee;
-//import com.ideas2it.model.Skills;
+import com.ideas2it.model.Employee;
 
 /**
  * Trainee POJO class is to get and set Trainee details

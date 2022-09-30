@@ -1,7 +1,5 @@
 package com.ideas2it.model;
 
-import java.util.List;
-
 /**
  * Skills POJO class is to get and set Skill details
  *

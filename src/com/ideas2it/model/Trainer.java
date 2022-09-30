@@ -1,6 +1,6 @@
 package com.ideas2it.model;
 
-//import com.ideas2it.model.Employee;
+import com.ideas2it.model.Employee;
 
 /**
  * Trainer POJO class is to get and set Trainer details

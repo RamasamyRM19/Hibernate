@@ -1,11 +1,12 @@
 package com.ideas2it.service;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import java.util.regex.Matcher; 
 import java.util.regex.Pattern;
-import org.hibernate.HibernateException;
+import java.util.Set;
 
 import com.ideas2it.dao.EmployeeDAO;
 import com.ideas2it.model.Skills;
@@ -108,7 +109,8 @@ public class EmployeeService {
                                     String department, String phoneNumber, String emailId, 
                                     String dateOfBirth, String previousExperience, 
                                     String dateOfJoining, String salary) {
-    	for (Trainer trainer : employeeDAO.retrieveAllTrainers()) {
+        List<Trainer> trainers = employeeDAO.retrieveAllTrainers();
+    	for (Trainer trainer : trainers) {
     		if ((trainer.getId()).equals(id)) {
     			if (!firstName.isEmpty()) {
     				trainer.setFirstName(firstName);
@@ -155,11 +157,7 @@ public class EmployeeService {
      * @return 
      */
     public void deleteTrainerById(Integer id) {
-        try {
-            employeeDAO.deleteTrainerById(id);
-        } catch (HibernateException exception) {
-            exception.getMessage();
-        }
+        employeeDAO.deleteTrainerById(id);
     }
 
     /**
@@ -179,11 +177,7 @@ public class EmployeeService {
         Integer rowsAffected = null;
         Trainee trainee = new Trainee(id, firstName, lastName, designation, department, phoneNumber, emailId,
                                       dateOfBirth, previousExperience, dateOfJoining, passedOutYear, skills);
-        //try {
-            rowsAffected = employeeDAO.insertTrainee(trainee);
-        //} catch (HibernateException exception) {
-          //  exception.getMessage();
-        //}
+        rowsAffected = employeeDAO.insertTrainee(trainee);
         return rowsAffected;
     }
     
@@ -197,11 +191,7 @@ public class EmployeeService {
      */
     public List<Trainee> getAllTrainees() {
         List<Trainee> trainees = new ArrayList<Trainee>();
-        try {
-            trainees = employeeDAO.retrieveAllTrainees();
-        } catch (HibernateException exception) {
-            exception.getMessage();
-        }
+        trainees = employeeDAO.retrieveAllTrainees();
         return trainees;
     }
 
@@ -216,15 +206,11 @@ public class EmployeeService {
      */
     public Boolean checkTraineeById(Integer id) {
         Boolean isValidTraineeId = false;
-        try {
-            for (Trainee trainee : employeeDAO.retrieveAllTrainees()) { 
-                if (trainee.getId().equals(id)) {
-                    isValidTraineeId = true;
-                }
-            }
-        } catch (HibernateException exception) {
-            exception.getMessage();
-        }
+        for (Trainee trainee : employeeDAO.retrieveAllTrainees()) { 
+            if (trainee.getId().equals(id)) {
+                isValidTraineeId = true;
+            }  
+        } 
         return isValidTraineeId;
     }
 
@@ -235,15 +221,11 @@ public class EmployeeService {
      * </p>
      *
      * @param Integer id - employee id value for the Trainee display operation
-     * @return List<Trainee> trainees
+     * @return Trainee trainees
      */
     public Trainee getTraineeById(Integer id) { 
         Trainee trainee = new Trainee();
-        try {
-            trainee = employeeDAO.retrieveTraineeById(id); 
-        } catch (HibernateException exception) {
-            exception.getMessage();
-        }
+        trainee = employeeDAO.retrieveTraineeById(id); 
         return trainee;
     }
 
@@ -259,47 +241,44 @@ public class EmployeeService {
      * @return String
      */
     public void updateTraineeById(Integer id, String firstName, String lastName, String designation, 
-                                    String department, String phoneNumber, String emailId, 
-                                    String dateOfBirth, String previousExperience, 
-                                    String dateOfJoining, String passedOutYear) {
-        try {
-            for (Trainee trainee : employeeDAO.retrieveAllTrainees()) {
-                if ((trainee.getId()).equals(id)) {
-                    if (!firstName.isEmpty()) {
-                        trainee.setFirstName(firstName);
-                    }
-                    if (!lastName.isEmpty()) {
-                        trainee.setLastName(lastName);
-                    }
-                    if (!designation.isEmpty()) {
-                        trainee.setDesignation(designation);
-                    }
-                    if (!department.isEmpty()) {
-                        trainee.setDepartment(department);
-                    }
-                    if (!phoneNumber.isEmpty()) {
-                        trainee.setPhoneNumber(Long.parseLong(phoneNumber));
-                    }
-                    if (!emailId.isEmpty()) {
-                        trainee.setEmailId(emailId);
-                    }
-                    if (!dateOfBirth.isEmpty()) {
-                        trainee.setDateOfBirth(dateOfBirth);
-                    }
-                    if (!previousExperience.isEmpty()) {
-                        trainee.setPreviousExperience(Float.parseFloat(previousExperience));
-                    }
-                    if (!dateOfJoining.isEmpty()) {
-                        trainee.setDateOfJoining(dateOfJoining);
-                    }
-                    if (!passedOutYear.isEmpty()) {
-                        trainee.setPassedOutYear(Integer.parseInt(passedOutYear));
-                    }
-                    employeeDAO.updateTraineeById(trainee);
+            String department, String phoneNumber, String emailId, 
+            String dateOfBirth, String previousExperience, 
+            String dateOfJoining, String passedOutYear) {
+        List<Trainee> trainees = employeeDAO.retrieveAllTrainees();
+        for (Trainee trainee : trainees) {
+            if ((trainee.getId()).equals(id)) {
+                if (!firstName.isEmpty()) {
+                    trainee.setFirstName(firstName);
                 }
+                if (!lastName.isEmpty()) {
+                    trainee.setLastName(lastName);
+                }
+                if (!designation.isEmpty()) {
+                    trainee.setDesignation(designation);
+                }
+                if (!department.isEmpty()) {
+                    trainee.setDepartment(department);
+                }
+                if (!phoneNumber.isEmpty()) {
+                    trainee.setPhoneNumber(Long.parseLong(phoneNumber));
+                }
+                if (!emailId.isEmpty()) {
+                    trainee.setEmailId(emailId);
+                }
+                if (!dateOfBirth.isEmpty()) {
+                    trainee.setDateOfBirth(dateOfBirth);
+                }
+                if (!previousExperience.isEmpty()) {
+                    trainee.setPreviousExperience(Float.parseFloat(previousExperience));
+                }
+                if (!dateOfJoining.isEmpty()) {
+                    trainee.setDateOfJoining(dateOfJoining);
+                }
+                if (!passedOutYear.isEmpty()) {
+                    trainee.setPassedOutYear(Integer.parseInt(passedOutYear));
+                }
+                employeeDAO.updateTraineeById(trainee);
             }
-        } catch (HibernateException exception) {
-            exception.getMessage();
         }
     }  
 
@@ -313,11 +292,7 @@ public class EmployeeService {
      * @return 
      */
     public void deleteTraineeById(Integer id) {
-        try {
-            employeeDAO.deleteTraineeById(id);
-        } catch (HibernateException exception) {
-            exception.getMessage();
-        }
+        employeeDAO.deleteTraineeById(id);
     }
 
     /**
@@ -331,11 +306,7 @@ public class EmployeeService {
      */
     public List<Trainer> searchTrainerByFirstName(String firstName) {
         List<Trainer> trainers = new ArrayList<Trainer>();
-        try {
-            trainers = employeeDAO.searchTrainerByFirstName(firstName);
-        } catch (HibernateException exception) {
-            exception.getMessage();
-        } 
+        trainers = employeeDAO.searchTrainerByFirstName(firstName);
         return trainers;
     }
 
@@ -350,11 +321,7 @@ public class EmployeeService {
      */
     public List<Trainer> searchTrainerByLastName(String lastName) {
         List<Trainer> trainers = new ArrayList<Trainer>();
-        try {
-            trainers = employeeDAO.searchTrainerByLastName(lastName);
-        } catch (HibernateException exception) {
-            exception.getMessage();
-        } 
+        trainers = employeeDAO.searchTrainerByLastName(lastName);
         return trainers;
     }
 
@@ -369,11 +336,7 @@ public class EmployeeService {
      */
     public List<Trainee> searchTraineeByFirstName(String firstName) {
     	List<Trainee> trainees = new ArrayList<Trainee>();
-        try {
-            trainees = employeeDAO.searchTraineeByFirstName(firstName);
-        } catch (HibernateException exception) {
-            exception.getMessage();
-        } 
+        trainees = employeeDAO.searchTraineeByFirstName(firstName);
         return trainees;
     }
 
@@ -388,27 +351,8 @@ public class EmployeeService {
      */
     public List<Trainee> searchTraineeByLastName(String lastName) {
     	List<Trainee> trainees = new ArrayList<Trainee>();
-        try {
-            trainees = employeeDAO.searchTraineeByLastName(lastName); 
-        } catch (HibernateException exception) {
-            exception.getMessage();
-        } 
+        trainees = employeeDAO.searchTraineeByLastName(lastName); 
         return trainees;
-    }
-
-    /**
-     * <p>
-     * Function to check if the mobile number is valid or not.
-     * the matcher() method creates a matcher that will match the given input against this pattern
-     * </p>
-     *
-     * @param String str
-     * @return Boolean true, Boolean false
-     */    
-    public static Boolean validatePhoneNumber(String str) {  
-        Pattern pattern = Pattern.compile("[6-9][0-9]{9}");  
-        Matcher match = pattern.matcher(str);  
-        return (match.find() && match.group().equals(str));  
     }  
 
     /**
@@ -420,7 +364,7 @@ public class EmployeeService {
      * @param String firstName
      * @return Boolean true, Boolean false 
      */   
-    public static Boolean validateFirstName(String firstName) {
+    public Boolean isValidFirstName(String firstName) {
        return firstName.matches("[A-Z][a-zA-Z]*");
     } 
 
@@ -433,10 +377,25 @@ public class EmployeeService {
      * @param String lastName
      * @return Boolean true, Boolean false 
      */   
-    public static Boolean validateLastName(String lastName) {
+    public Boolean isValidLastName(String lastName) {
        return lastName.matches("[a-zA-z]+([ '-][a-zA-Z]+)*");
     } 
 
+    /**
+     * <p>
+     * Function to check if the mobile number is valid or not.
+     * the matcher() method creates a matcher that will match the given input against this pattern
+     * </p>
+     *
+     * @param String str
+     * @return Boolean true, Boolean false
+     */    
+    public Boolean isValidPhoneNumber(String str) {  
+        Pattern pattern = Pattern.compile("[6-9][0-9]{9}");  
+        Matcher match = pattern.matcher(str);  
+        return (match.find() && match.group().equals(str));  
+    }
+    
     /**
      * <p>
      * Function to check if the email id is valid or not.
@@ -446,23 +405,57 @@ public class EmployeeService {
      * @param String emailId
      * @return Boolean true, Boolean false
      */   
-    public static Boolean validateEmailId(String emailId) {
+    public Boolean isValidEmailId(String emailId) {
        String regex = "^[a-z][a-z0-9.]{4,}@[a-z0-9.]{5,}(com|in|co.in|org|edu)$";
        Pattern pattern = Pattern.compile(regex);  
        Matcher matcher = pattern.matcher(emailId);  
        return matcher.matches();  
     }  
-
+    
     /**
      * <p>
-     * Function to check if the Designation is valid or not.
-     * the matcher() method creates a matcher that will match the given input against this pattern
+     * Function to check if the employee's age is valid or not.
+     * It calculates the age of an employee based on current date & birthday date
+     * & checks the age should be greater than 18 and lesser than 60 to be a 
+     * eligible employee
      * </p>
      *
-     * @param String designation
+     * @param LocalDate birthDate
      * @return Boolean true, Boolean false
      */   
-    public static Boolean validateDesignation(String designation) {
-       return designation.matches("[A-Z][a-zA-Z]*");
+    public Boolean isValidEmployee(LocalDate birthDate) {
+        LocalDate currentDate = LocalDate.now();   
+        if ((birthDate != null) && (currentDate != null)) {  
+            Integer age = Period.between(birthDate, currentDate).getYears();
+            if ((age > 18 ) && (age < 60)) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {  
+            return false;  
+        }  
+    }
+    
+    /**
+     * <p>
+     * Function to check if the employee's joining date is valid or not.
+     * It compares the current date & joining date
+     * </p>
+     *
+     * @param LocalDate date
+     * @return Boolean true, Boolean false
+     */   
+    public Boolean isFutureDate(LocalDate date) {
+        LocalDate currentDate = LocalDate.now();  
+        if ((date != null) && (currentDate != null)) { 
+            if (date.compareTo(currentDate) > 0) {
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
     }
 }

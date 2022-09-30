@@ -2,12 +2,12 @@ package com.ideas2it.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.hibernate.cfg.Configuration;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 
 import com.ideas2it.model.Trainee;
 import com.ideas2it.model.Trainer;
@@ -38,7 +38,6 @@ public class EmployeeDAO {
 		Transaction transaction = session.beginTransaction();
 		rowsAffected = (Integer) session.save(trainer);
 		transaction.commit();
-		System.out.println("Session Executed Successfully");
 		session.close();
 		return rowsAffected;
 	}
@@ -89,7 +88,6 @@ public class EmployeeDAO {
 	public void updateTrainerById(Trainer trainer) throws HibernateException {
 		sessionFactory = new Configuration().configure().buildSessionFactory();
 		Session session = sessionFactory.openSession();
-		//trainer = (Trainer)session.get(Trainer.class, id);
 		Transaction transaction = session.beginTransaction();
 		if (!trainer.isEmpty()) {
 			session.merge(trainer);
