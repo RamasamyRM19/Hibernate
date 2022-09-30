@@ -1,0 +1,23 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping package="com.ideas2it.model">
+   <class name = "com.ideas2it.model.Trainee" table = "TRAINEE">
+      
+      <meta attribute = "class-description">
+         This class contains the trainee detail. 
+      </meta>
+      
+      <id name = "id" type = "int" column = "Id">
+         <generator class="native"/>
+      </id>
+      <property name = "passedOutYear" column = "passedOutYear" type = "int"/>
+      <!-- <many-to-one name="employee" class="com.ideas2it.model.Employee" 
+		     column="emp_id" not-null="true" unique="true" cascade="all" fetch="join">
+	</many-to-one> -->
+      <many-to-one name="skills" class="com.ideas2it.model.Skills" 
+		     column="skill_id" not-null="true" cascade="save-update" fetch="join"/>
+   </class>
+</hibernate-mapping>
