@@ -44,7 +44,7 @@ public class EmployeeDAO {
 
     /**
      * <p>
-     * Get all Trainer details from SQL Databases
+     * Get all Trainer details 
      * </p>
      *
      * @param
@@ -62,7 +62,7 @@ public class EmployeeDAO {
 
     /**
      * <p>
-     * Get the particular Trainer detail from SQL database
+     * Get the particular Trainer detail 
      * </p>
      *
      * @param Integer id
@@ -79,7 +79,7 @@ public class EmployeeDAO {
 
     /**
      * <p>
-     * Update the particular trainer detail by id
+     * Update the particular trainer detail
      * </p>
      *
      * @param Trainer trainer
@@ -98,7 +98,7 @@ public class EmployeeDAO {
 
     /**
      * <p>
-     * Delete the particular Trainer detail from SQL database
+     * Delete the particular Trainer detail 
      * </p>
      *
      * @param Integer id
@@ -116,7 +116,7 @@ public class EmployeeDAO {
 
     /**
      * <p>
-     * Insert Trainee Details into sql database
+     * Insert Trainee Details 
      * </p>
      *
      * @param Trainee trainee
@@ -136,7 +136,7 @@ public class EmployeeDAO {
 
     /**
      * <p>
-     * Get all Trainee details from SQL Database
+     * Get all Trainee details
      * </p>
      *
      * @param
@@ -154,7 +154,7 @@ public class EmployeeDAO {
 
     /**
      * <p>
-     * Get the particular Trainee detail from SQL database
+     * Get the particular Trainee detail 
      * </p>
      *
      * @param Integer id
@@ -190,7 +190,7 @@ public class EmployeeDAO {
 
     /**
      * <p>
-     * Delete the particular Trainee detail from SQL database
+     * Delete the particular Trainee detail 
      * </p>
      *
      * @param Integer id
@@ -208,7 +208,7 @@ public class EmployeeDAO {
 
     /**
      * <p>
-     * Search the particular Trainer detail from SQL database by FirstName
+     * Search the particular Trainer detail by FirstName
      * </p>
      *
      * @param String detail
@@ -228,7 +228,7 @@ public class EmployeeDAO {
 
     /**
      * <p>
-     * Search the particular Trainer detail from SQL database by LastName
+     * Search the particular Trainer detail by LastName
      * </p>
      *
      * @param String detail
@@ -248,7 +248,7 @@ public class EmployeeDAO {
 
     /**
      * <p>
-     * Search the particular Trainee detail from database by FirstName
+     * Search the particular Trainee detail by FirstName
      * </p>
      *
      * @param String detail
@@ -268,7 +268,7 @@ public class EmployeeDAO {
 
     /**
      * <p>
-     * Search the particular Trainee detail from database by LastName
+     * Search the particular Trainee detail by LastName
      * </p>
      *
      * @param String detail
