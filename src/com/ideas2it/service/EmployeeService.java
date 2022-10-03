@@ -111,39 +111,39 @@ public class EmployeeService {
                                     String dateOfJoining, String salary) {
         List<Trainer> trainers = employeeDAO.retrieveAllTrainers();
     	for (Trainer trainer : trainers) {
-    		if ((trainer.getId()).equals(id)) {
-    			if (!firstName.isEmpty()) {
-    				trainer.setFirstName(firstName);
-    			}
-    			if (!lastName.isEmpty()) {
-    				trainer.setLastName(lastName);
-    			}
-    			if (!designation.isEmpty()) {
-    				trainer.setDesignation(designation);
-    			}
-    			if (!department.isEmpty()) {
-    				trainer.setDepartment(department);
-    			}
-    			if (!phoneNumber.isEmpty()) {
-    				trainer.setPhoneNumber(Long.parseLong(phoneNumber));
-    			}
-    			if (!emailId.isEmpty()) {
-    				trainer.setEmailId(emailId);
-    			}
-    			if (!dateOfBirth.isEmpty()) {
-    				trainer.setDateOfBirth(dateOfBirth);
-    			}
-    			if (!previousExperience.isEmpty()) {
-    				trainer.setPreviousExperience(Float.parseFloat(previousExperience));
-    			}
-    			if (!dateOfJoining.isEmpty()) {
-    				trainer.setDateOfJoining(dateOfJoining);
-    			}
-    			if (!salary.isEmpty()) {
-    				trainer.setSalary(Long.parseLong(salary));
-    			}   
-    			employeeDAO.updateTrainerById(trainer);
+    	    if ((trainer.getId()).equals(id)) {
+    		if (!firstName.isEmpty()) {
+    			trainer.setFirstName(firstName);
     		}
+    		if (!lastName.isEmpty()) {
+    			trainer.setLastName(lastName);
+    		}
+    		if (!designation.isEmpty()) {
+    			trainer.setDesignation(designation);
+    		}
+    		if (!department.isEmpty()) {
+    			trainer.setDepartment(department);
+    		}
+    		if (!phoneNumber.isEmpty()) {
+    			trainer.setPhoneNumber(Long.parseLong(phoneNumber));
+    		}
+    		if (!emailId.isEmpty()) {
+    			trainer.setEmailId(emailId);
+    		}
+    		if (!dateOfBirth.isEmpty()) {
+    			trainer.setDateOfBirth(dateOfBirth);
+    		}
+    		if (!previousExperience.isEmpty()) {
+    			trainer.setPreviousExperience(Float.parseFloat(previousExperience));
+    		}
+    		if (!dateOfJoining.isEmpty()) {
+    			trainer.setDateOfJoining(dateOfJoining);
+    		}
+    		if (!salary.isEmpty()) {
+    			trainer.setSalary(Long.parseLong(salary));
+    		}   
+    		employeeDAO.updateTrainerById(trainer);
+    	    }
     	}
     }
 
@@ -365,7 +365,7 @@ public class EmployeeService {
      * @return Boolean true, Boolean false 
      */   
     public Boolean isValidFirstName(String firstName) {
-       return firstName.matches("[A-Z][a-zA-Z]*");
+        return firstName.matches("[A-Z][a-zA-Z]*");
     } 
 
     /**
@@ -378,7 +378,7 @@ public class EmployeeService {
      * @return Boolean true, Boolean false 
      */   
     public Boolean isValidLastName(String lastName) {
-       return lastName.matches("[a-zA-z]+([ '-][a-zA-Z]+)*");
+        return lastName.matches("[a-zA-z]+([ '-][a-zA-Z]+)*");
     } 
 
     /**
@@ -406,10 +406,10 @@ public class EmployeeService {
      * @return Boolean true, Boolean false
      */   
     public Boolean isValidEmailId(String emailId) {
-       String regex = "^[a-z][a-z0-9.]{4,}@[a-z0-9.]{5,}(com|in|co.in|org|edu)$";
-       Pattern pattern = Pattern.compile(regex);  
-       Matcher matcher = pattern.matcher(emailId);  
-       return matcher.matches();  
+        String regex = "^[a-z][a-z0-9.]{4,}@[a-z0-9.]{5,}(com|in|co.in|org|edu)$";
+        Pattern pattern = Pattern.compile(regex);  
+        Matcher matcher = pattern.matcher(emailId);  
+        return matcher.matches();  
     }  
     
     /**
