@@ -14,9 +14,6 @@
          <generator class="native"/>
       </id>
       <property name = "salary" column = "salary" type = "long"/>
-      <!-- <many-to-one name="employee" class="com.ideas2it.model.Employee" 
-		     column="emp_id" not-null="true" unique="true" cascade="all" fetch="join">
-	</many-to-one> -->
 	
    </class>
 </hibernate-mapping>
