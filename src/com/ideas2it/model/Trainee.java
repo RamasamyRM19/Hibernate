@@ -59,8 +59,8 @@ public class Trainee extends Employee {
                 + skills.toString().replace("[", "").replace(",", "\n").replace("]", ""));
     }
 
-	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    public boolean isEmpty() {
+	// TODO Auto-generated method stub
+	return false;
+    }
 }
