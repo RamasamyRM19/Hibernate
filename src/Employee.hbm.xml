@@ -27,7 +27,7 @@
         <joined-subclass name="Trainee" table="Trainee">
             <key column="Id"/>
             <property name = "passedOutYear" column = "passedOutYear" type = "int"/>
-            <set name = "Skills" cascade="save-update">
+            <set name = "Skills" cascade="save-update" lazy="true" fetch="select">
                 <key column = "traineeId"/>  
                 <one-to-many class="Skills"/>
             </set>
