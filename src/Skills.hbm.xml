@@ -4,27 +4,22 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="com.ideas2it.model.Skills" table="Skills">
+    <class name="com.ideas2it.model.Skills" table="Skills">
 
-		<meta attribute="class-description">
-			This class contains the skills detail.
-		</meta>
+	<meta attribute="class-description">
+		This class contains the skills detail.
+	</meta>
 
-		<id name="skillId" type="int" column="Id">
-			<generator class="native" />
-		</id>
-		<property name="skillName" column="skillName" type="string" />
-		<property name="skillVersion" column="skillVersion"
-			type="string" />
-		<property name="lastUsedYear" column="lastUsedYear"
-			type="int" />
-		<property name="skillExperience" column="skillExperience"
-			type="float" />
+	<id name="skillId" type="int" column="Id">
+		<generator class="native" />
+	</id>
+	<property name="skillName" column="skillName" type="string" />
+	<property name="skillVersion" column="skillVersion"
+		type="string" />
+	<property name="lastUsedYear" column="lastUsedYear"
+		type="int" />
+	<property name="skillExperience" column="skillExperience"
+		type="float" />
 
-		<!-- <many-to-one name="trainee"
-			class="com.ideas2it.model.Trainee" column="emp_id"
-			not-null="true" unique="true" cascade="all" fetch="join">
-		</many-to-one> -->
-
-	</class>
+    </class>
 </hibernate-mapping>
