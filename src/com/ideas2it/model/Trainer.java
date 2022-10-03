@@ -36,8 +36,8 @@ public class Trainer extends Employee {
         return (super.toString() + "\nSalary        : " + salary);
     }
 
-	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    public boolean isEmpty() {
+	// TODO Auto-generated method stub
+	return false;
+    }
 }
