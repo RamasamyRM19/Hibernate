@@ -4,20 +4,20 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping package = "com.ideas2it.model">
-	<class name="Employee" table="Employee">
-		<id name="id">
-			<generator class="increment"></generator>
-		</id>
+    <class name="Employee" table="Employee">
+	<id name="id">
+		<generator class="increment"></generator>
+	</id>
 
-		<property name="firstName"></property>
-		<property name="lastName"></property>
-		<property name="designation"></property>
-		<property name="department"></property>
-		<property name="phoneNumber"></property>
-		<property name="emailId"></property>
-		<property name="dateOfBirth"></property>
-		<property name="previousExperience"></property>
-		<property name="dateOfJoining"></property>
+	<property name="firstName"></property>
+	<property name="lastName"></property>
+	<property name="designation"></property>
+	<property name="department"></property>
+	<property name="phoneNumber"></property>
+	<property name="emailId"></property>
+	<property name="dateOfBirth"></property>
+	<property name="previousExperience"></property>
+	<property name="dateOfJoining"></property>
 
         <joined-subclass name="Trainer" table="Trainer">
            <key column="Id"/>
@@ -32,6 +32,5 @@
                 <one-to-many class="Skills"/>
             </set>
         </joined-subclass>
-      
-	</class>
+    </class>
 </hibernate-mapping>  
